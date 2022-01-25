@@ -75,9 +75,14 @@ const Form = ( {currentId, setCurrentId} ) => {
             
             {/* use e.target.checked instead of e.target.value here! e.target.value is always false... */}
 
+            <MuiPickersUtilsProvider utils={MomentUtils}>
+                <DatePicker label="Start Date" inputVariant="outlined" value={postData.startDate} onChange={(date) => setPostData({ ...postData, startDate: date }) } />
+                <DatePicker label="End Date" inputVariant="outlined" value={postData.endDate} onChange={(date) => setPostData({ ...postData, endDate: date }) } />
+                <DatePicker label="Interview Date" inputVariant="outlined" value={postData.interviewDate} onChange={(date) => setPostData({ ...postData, interviewDate: date }) } />
+            </MuiPickersUtilsProvider>
 
             <FormGroup>
-                <FormControlLabel control={<Checkbox  value={postData.referred} onChange={(e)=>setPostData({ ...postData, referred: e.target.checked })}/>} label="Referred by employee" />
+                <FormControlLabel control={<Checkbox  value={postData.referred} onChange={(e)=>setPostData({ ...postData, referred: e.target.checked })}/>} label="Referred by an employee" />
             </FormGroup>
             <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })} /></div>
 

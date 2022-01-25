@@ -29,7 +29,13 @@ const Post = ({post, setCurrentId}) => {
             <CardMedia className={classes.media} image={post.selectedFile} title={post.title}/>
             <div className={classes.overlay}>
                 <Typography variant="h6">{post.positionTitle}, {post.companyName}</Typography>
-                <Typography variant="body2">{moment(post.createdOn).fromNow()}</Typography>
+                <Typography variant="body2">{post.companyLocation}</Typography>
+                <br/>
+                <Typography variant="body2">{`Applied on:${moment(post.createdOn).format('YYYY-MM-DD')}`}</Typography>
+                <Typography variant="body2">{`Start date:${moment(post.startDate).format('YYYY-MM-DD')}`}</Typography>
+                <Typography variant="body2">{`End date:${moment(post.endDate).format('YYYY-MM-DD')}`}</Typography>
+
+
             </div>
             {/* <div className={classes.overlay2}>
                 <Button style={{color:'white'}} size="small" onClick={()=>{
