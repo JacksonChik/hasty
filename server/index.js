@@ -13,7 +13,9 @@ app.use(bodyParser.urlencoded({limit:"30mb", extended: true}));
 app.use(cors());
 
 app.use('/posts', postRoutes);
-
+app.get('/',(req,res) => {
+    res.send('Connected to hasty\'s api')
+})
 const CONNECTION_URL = 'mongodb+srv://jacksonchik01:2001_08_02@cluster0.pxltj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;
 
