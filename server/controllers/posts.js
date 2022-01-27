@@ -18,7 +18,6 @@ export const getPosts = async (req, res) => {
 export const createPost = async (req, res) => {
 
     const newPostMessage = new PostMessage(req.body)
-//is this ok?
 
     try {
         await newPostMessage.save();
@@ -39,14 +38,6 @@ export const updatePost = async (req,res) => {
     res.json(updatedPost);
 }
 
-
-
-
-
-
-
-
-//DOUBLE CHECK
 export const deletePost = async (req, res) => {
     try{
         const {id: _id} = req.params;
