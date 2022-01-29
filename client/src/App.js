@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Container, AppBar,  Typography, Grow, Grid} from '@material-ui/core';
 import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from './actions/posts';
-import memories from './images/memories.png';
 import Posts from "./components/Posts/Posts";
 import Form from "./components/Form/Form";
 import useStyles from './styles';
+import LineChart from "./components/Charts/LineChart/LineChart";
 
 const App = () =>{
     const [currentId, setCurrentId] = useState(null);
@@ -23,8 +23,8 @@ const App = () =>{
                 <Typography variant="h4" align="center">
                     Welcome back! You have applied to {posts? posts.length : 0} jobs in total this season.
                 </Typography>
-                {/* <img className={classes.heading} src={memories} alt="memories" height="60"/> */}
             </AppBar>
+            <LineChart height={200} width={500} data={[]}/>
             <Grow in>
                 <Container>
                     <Grid container justify="space-between" alignItems="stretch" spacing={3}>

@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react'
 import * as d3 from 'd3'
 
-import './styles.css'
+import './index.css'
 
 const LineChart = (props) => {
     const { data, width, height } = props;
     
     const drawChart = () => {
-        // TODO
+        // TO CHANGE
     }
 
     useEffect(() => {
