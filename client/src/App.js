@@ -25,8 +25,7 @@ const App = () => {
           total this season.
         </Typography>
       </AppBar>
-      <LineChart height={200} width={1000} data={[]} />
-      {/* data should be an array of objects, where every object refers to the job search stats(only job count for now) of 1 day! */}
+      <LineChart height={200} width={1000} rawPostData={posts} />
       <Grow in>
         <Container>
           <Grid

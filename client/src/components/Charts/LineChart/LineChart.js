@@ -6,10 +6,18 @@ import "./index.css";
 // TODO : make the graph responsive
 // https://stackoverflow.com/questions/16265123/resize-svg-when-window-is-resized-in-d3-js
 
-// TODO : check the useEffect() hook to see 
+// TODO : check the useEffect() hook to see
+
+// TODO : what if we want more than 1 line chart at the same time?? will the useEffect() hook remove other line charts as well?
 
 const LineChart = (props) => {
-  const { data, height, width } = props;
+  const { rawPostData, height, width } = props;
+  console.log(rawPostData);
+
+  const data = rawPostData; // is this ok? will it rerender on state change?
+  /* data should be an array of objects, where every object refers to the job search stats(only job count for now) of 1 day! */
+  /* The logic of filtering useful data from all the posts is handled inside the LineChart component! */
+
   const svg = d3
     .select("#container")
     .append("svg")
@@ -24,7 +32,7 @@ const LineChart = (props) => {
       .append("rect")
       .attr("width", "100%")
       .attr("height", "100%")
-      .attr("fill", "silver");
+      .attr("fill", "white");
 
     const xScale = d3
       .scaleLinear()
