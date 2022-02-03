@@ -6,26 +6,26 @@ import "./index.css";
 // TODO : make the graph responsive
 // https://stackoverflow.com/questions/16265123/resize-svg-when-window-is-resized-in-d3-js
 
+// TODO : check the useEffect() hook to see 
+
 const LineChart = (props) => {
   const { data, height, width } = props;
+  const svg = d3
+    .select("#container")
+    .append("svg")
+    .attr("height", height)
+    .attr("width", width)
+    .append("g");
 
   const drawChart = () => {
-    // TO CHANGE
-    // set the dimensions and margins of the graph
     var margin = { top: 10, right: 30, bottom: 30, left: 30 };
 
-    const svg = d3
-      .select("#container")
-      .append("svg")
-      .attr("height", height)
-      .attr("width", width)
-      .append("g");
-    // .attr("transform", `translate(${margin.left},${margin.top})`);
     svg
       .append("rect")
       .attr("width", "100%")
       .attr("height", "100%")
       .attr("fill", "silver");
+
     const xScale = d3
       .scaleLinear()
       .domain([
@@ -77,6 +77,9 @@ const LineChart = (props) => {
   };
 
   useEffect(() => {
+    if (d3.select("#container").selectAll("svg").size() > 1)
+      d3.select("#container").select("svg").remove();
+    // to fix the bug that everytime when data changes, a new graph is appended while the old one isn't removed(so there is more than 1 graph shown)
     drawChart();
   }, [data]);
 
